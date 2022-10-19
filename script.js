@@ -45,6 +45,22 @@ function displayPhotos() {
     img.addEventListener("load", imageLoaded);
     item.append(img);
     imgContainer.append(item);
+    // Add photo owners name
+    const imageFrame = document.createElement('h2');
+    imageFrame.innerHTML = photo.user.username; 
+    imageFrame.className = 'userName'; 
+    imgContainer.append(imageFrame)
+    // Shows amount of downloads
+    const btnDownload = document.createElement('button');
+    btnDownload.className = 'btnDownloads';
+    btnDownload.textContent = `Download`;
+    // btnDownload.onclick(photo.links.download)
+  
+    imgContainer.append(btnDownload)
+    const description = document.createElement('p')
+    description.textContent = photo.description;
+    // needs conditional logic
+    imgContainer.append(description)
   });
 }
 
@@ -55,6 +71,7 @@ async function getPhotos() {
     const response = await fetch(apiUrl);
     photosArray = await response.json();
     displayPhotos();
+    console.log(photosArray)
   } catch (error) {
     // console.log("Server down");
   }
