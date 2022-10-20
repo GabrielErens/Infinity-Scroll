@@ -51,17 +51,24 @@ function displayPhotos() {
     imageFrame.className = 'userName'; 
     imgContainer.append(imageFrame)
     // Shows amount of downloads
-    const btnDownload = document.createElement('button');
+    const btnDownload = document.createElement('a');
     btnDownload.className = 'btnDownloads';
+    btnDownload.id = 'btnDownload'
     btnDownload.textContent = `Download`;
-    // btnDownload.onclick(photo.links.download)
+    btnDownload.setAttribute('href',photo.links.download)
+
   
     imgContainer.append(btnDownload)
     const description = document.createElement('p')
-    description.textContent = photo.description;
+    if(photo.description === null){
+      description.textContent = 'No description available';
+    }else{
+      description.textContent = `Description : ${photo.description}`;
+    }
     // needs conditional logic
     imgContainer.append(description)
   });
+
 }
 
 // Get photos from Unsplash Api
