@@ -7,9 +7,9 @@ let totalImages = 0;
 let photosArray = [];
 
 // Unsplash API
-const count = "10";
+let numberOfImagesLoaded = 5;
 const apiKey = "096WIXUo2GXgai-I8SjL-FzryV5ef10P_qrbJua3Zz0";
-const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
+let apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${numberOfImagesLoaded}`;
 
 // Check if images were loaded
 function imageLoaded() {
@@ -20,6 +20,8 @@ function imageLoaded() {
     ready = true;
     loader.hidden = true;
     console.log("ready =", ready);
+    numberOfImagesLoaded = 10;
+    apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${numberOfImagesLoaded}`;
   }
 }
 
@@ -60,10 +62,11 @@ function displayPhotos() {
   
     imgContainer.append(btnDownload)
     const description = document.createElement('p')
+    description.className = 'description'
     if(photo.description === null){
       description.textContent = 'No description available';
     }else{
-      description.textContent = `Description : ${photo.description}`;
+      description.textContent = photo.description;
     }
     // needs conditional logic
     imgContainer.append(description)
