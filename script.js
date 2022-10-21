@@ -49,7 +49,7 @@ function displayPhotos() {
     imgContainer.append(item);
     // Add photo owners name
     const imageFrame = document.createElement('h2');
-    imageFrame.innerHTML = photo.user.username; 
+    imageFrame.innerHTML = photo.user.name; 
     imageFrame.className = 'userName'; 
     imgContainer.append(imageFrame)
     // Shows amount of downloads
